@@ -63,7 +63,7 @@ export PATH=$PATH:/usr/local/go/bin
 4. Перезапустите терминал и проверьте `go version`.
 
 ## Настройка VS Code для разработки на Go
-
+Инструкция от Microsoft: https://learn.microsoft.com/ru-ru/azure/developer/go/configure-visual-studio-code 
 1. Установите Visual Studio Code.
 2. Откройте VS Code → Extensions (Ctrl+Shift+X) → найдите и установите расширение **Go** (от команды Go).
 3. Откройте папку с проектом (File → Open Folder).
