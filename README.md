@@ -1,2 +1,2 @@
 # Go-Into-Course
-Курс по основам Go
+1. Установка Go в Visual Studio Code 
