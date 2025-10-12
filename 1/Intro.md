@@ -49,7 +49,7 @@ brew install go
 
 Проверьте: `go version`.
 
-### Linux (пример — ручная установка)
+### Linux (ручная установка)
 
 1. Скачайте архив `goX.Y.Z.linux-amd64.tar.gz` с официального сайта.
 2. Распакуйте в `/usr/local`:
@@ -67,12 +67,13 @@ export PATH=$PATH:/usr/local/go/bin
 4. Перезапустите терминал и проверьте `go version`.
 
 ## Настройка VS Code для разработки на Go
-Инструкция от Microsoft: https://learn.microsoft.com/ru-ru/azure/developer/go/configure-visual-studio-code 
+Полная инструкция от Microsoft: https://learn.microsoft.com/ru-ru/azure/developer/go/configure-visual-studio-code 
 1. Установите Visual Studio Code.
 2. Откройте VS Code → Extensions (Ctrl+Shift+X) → найдите и установите расширение **Go** (от команды Go).
+     <img width="1139" height="647" alt="IMG_3615" src="https://github.com/user-attachments/assets/14a541c7-0dec-4321-a57d-a302e88dcb5f" />
 3. Откройте папку с проектом (File → Open Folder).
 4. При первом открытии `.go` файлов расширение предложит установить дополнительные инструменты (gopls, dlv и пр.). Разрешите установку.
-5. Рекомендуемые команды:
+Рекомендуемые команды:
 
    * Форматирование: `Shift+Alt+F` (или `go fmt`).
    * Запуск тестов: `go test ./...`.
