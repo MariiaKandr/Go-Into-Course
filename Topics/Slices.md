@@ -18,7 +18,9 @@ i := a[0]
 ```
 // a[2] == 0, the zero value of the int type
 ```
-!(https://go.dev/blog/slices-intro/slice-array.png) 
+
+<img width="517" height="68" alt="image" src="https://github.com/user-attachments/assets/f63c35d5-9f55-4b9c-ad92-e862446f327d" />
+
 
 В памяти [4]int представлен всего четырьмя целочисленными значениями, расположенными последовательно:
 
@@ -107,11 +109,12 @@ s := x[:] // a slice referencing the storage of x
 
 Срез — это дескриптор сегмента массива. Он состоит из указателя на массив, длины сегмента и его ёмкости (максимальной длины сегмента).
 
-https://go.dev/blog/slices-intro/slice-struct.png
+<img width="517" height="198" alt="image" src="https://github.com/user-attachments/assets/fdc87c96-20fe-4c73-9ae8-9fe7b75ae11f" />
 
 Наша переменная s, созданная ранее с помощью make([]byte, 5), имеет следующую структуру:
 
-!(https://go.dev/blog/slices-intro/slice-1.png)
+<img width="517" height="193" alt="image" src="https://github.com/user-attachments/assets/1154bd9c-1813-481e-ba6b-8501570c2231" />
+
 
 Длина — это количество элементов, на которые ссылается срез. Ёмкость — это количество элементов в базовом массиве (начиная с элемента, на который ссылается указатель среза). Различие между длиной и ёмкостью станет понятным, когда мы рассмотрим несколько следующих примеров.
 
@@ -120,7 +123,8 @@ https://go.dev/blog/slices-intro/slice-struct.png
 ```
 s = s[2:4]
 ```
-!(https://go.dev/blog/slices-intro/slice-2.png)
+
+<img width="517" height="192" alt="image" src="https://github.com/user-attachments/assets/bfc5ebea-c5ae-41da-9398-c7965d5fae64" />
 
 При нарезке данные не копируются. Создаётся новое значение среза, которое указывает на исходный массив. Это делает операции со срезами такими же эффективными, как и манипуляции с индексами массива. Таким образом, изменение элементов (а не самого среза) при повторной нарезке приводит к изменению элементов исходного среза.
 
@@ -138,7 +142,8 @@ e[1] = 'm'
 ```
 s = s[:cap(s)]
 ```
-!(https://go.dev/blog/slices-intro/slice-3.png)
+
+<img width="517" height="191" alt="image" src="https://github.com/user-attachments/assets/cfef7a00-3a5b-4bc6-86d9-8dd2fcfd6e30" />
 
 Размер среза не может превышать его вместимость. Попытка сделать это приведёт к ошибке во время выполнения, как и при индексации за пределами среза или массива. Аналогичным образом, срезы нельзя уменьшать до нуля, чтобы получить доступ к более ранним элементам массива.
 
