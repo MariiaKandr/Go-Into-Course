@@ -3,6 +3,7 @@
 2. [Настройка репозитория](https://github.com/MariiaKandr/Go-Into-Course/blob/main/1/Repositories.md)
 3. [Теория](https://github.com/MariiaKandr/Go-Into-Course/blob/main/Topics/)
 4. [Практики](https://github.com/MariiaKandr/Go-Into-Course/blob/main/Practice/)
+5. [Go в примерах](https://gobyexample.ru)
 
 ## Основная литература (сообщество Go.dev)
 
