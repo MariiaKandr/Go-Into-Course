@@ -372,6 +372,7 @@ fmt.Println(text2)
 
 ```
 s := "Hello, World!"
+count := utf8.RuneCountInString(s)
 
 fmt.Println(len(s)) // 13
 ```
