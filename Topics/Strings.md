@@ -800,6 +800,76 @@ t = "silent"
 YES
 ```
 
+<details><summary>Для самопроверки:</summary>
+<p>
+
+```go
+package main
+
+import (
+	"bufio"
+	"fmt"
+	"os"
+	"strings"
+)
+
+// Если предположим, что в проверке будут только латинские буквы нижнего регистра достаточно проверки со счетчиком
+// Для првоерки букв разного регистра можно использовать strings.ToLower перед проверкой
+func isAnagramASCII(s, t string) bool {
+	s = strings.TrimSpace(s)
+	t = strings.TrimSpace(t)
+
+	// Быстрая проверка длины
+	if len(s) != len(t) {
+		return false
+	}
+
+	// Массив счётчиков для букв a-z
+	var count [26]int
+
+	// Проходим по строке s, увеличиваем счётчик
+	for i := 0; i < len(s); i++ {
+		count[s[i]-'a']++
+	}
+
+	// Проходим по строке t, уменьшаем счётчик
+	for i := 0; i < len(t); i++ {
+		count[t[i]-'a']--
+	}
+
+	// Проверяем, что все счётчики равны нулю
+	for _, c := range count {
+		if c != 0 {
+			return false
+		}
+	}
+
+	return true
+}
+
+func main() {
+	reader := bufio.NewReader(os.Stdin)
+
+	// Ввод двух строк
+	fmt.Print("Введите первую строку: ")
+	s, _ := reader.ReadString('\n')
+	s = strings.TrimSpace(s)
+
+	fmt.Print("Введите вторую строку: ")
+	t, _ := reader.ReadString('\n')
+	t = strings.TrimSpace(t)
+
+	if isAnagramASCII(s, t) {
+		fmt.Println("YES")
+	} else {
+		fmt.Println("NO")
+	}
+}
+```
+
+</p>
+</details>
+
 ---
 
 ### 2. Наибольший общий префикс массива строк
