@@ -800,7 +800,7 @@ t = "silent"
 YES
 ```
 
-<details><summary>Для самопроверки:</summary>
+<details><summary>Для самопроверки</summary>
 <p>
 
 ```go
@@ -950,6 +950,74 @@ pat = "abcaby"
 6
 ```
 
+<details><summary>Для самопроверки</summary>
+<p>
+
+```go
+package main
+
+import (
+	"fmt"
+)
+
+// buildPi строит префикс-функцию (pi) для шаблона pat
+func buildPi(pat string) []int {
+	m := len(pat)
+	pi := make([]int, m)
+	j := 0
+
+	for i := 1; i < m; i++ {
+		for j > 0 && pat[i] != pat[j] {
+			j = pi[j-1]
+		}
+		if pat[i] == pat[j] {
+			j++
+		}
+		pi[i] = j
+	}
+	return pi
+}
+
+// kmpSearch ищет первое вхождение pat в txt
+func kmpSearch(txt, pat string) int {
+	n := len(txt)
+	m := len(pat)
+
+	if m == 0 {
+		return 0 // пустой шаблон всегда вхож
+	}
+	if m > n {
+		return -1
+	}
+
+	pi := buildPi(pat)
+	j := 0
+
+	for i := 0; i < n; i++ {
+		for j > 0 && txt[i] != pat[j] {
+			j = pi[j-1]
+		}
+		if txt[i] == pat[j] {
+			j++
+		}
+		if j == m {
+			return i - m + 1 // нашли вхождение
+		}
+	}
+	return -1 // не нашли
+}
+
+func main() {
+	txt := "abxabcabcaby"
+	pat := "abcaby"
+
+	index := kmpSearch(txt, pat)
+	fmt.Println(index) // 6
+}
+
+```
+</p>
+</details>
 ---
 
 ### 4. Наибольшая палиндромная подстрока (Manacher / центр-расширение)
