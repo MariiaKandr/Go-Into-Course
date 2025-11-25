@@ -870,6 +870,49 @@ func main() {
 </p>
 </details>
 
+<details><summary>Чтобы отсортирвоать символы в строке вы фактически можете воспользоваться Count Sort</summary>
+<p>
+
+```go
+package main
+
+import (
+	"fmt"
+)
+
+func countSortString(s string) string {
+	// Предполагаем ASCII символы (0-127)
+	const asciiSize = 128
+	count := [asciiSize]int{}
+
+	// Считаем количество каждого символа
+	for i := 0; i < len(s); i++ {
+		count[s[i]]++
+	}
+
+	// Формируем отсортированную строку
+	result := make([]byte, 0, len(s))
+	for i := 0; i < asciiSize; i++ {
+		for count[i] > 0 {
+			result = append(result, byte(i))
+			count[i]--
+		}
+	}
+
+	return string(result)
+}
+
+func main() {
+	s := "golangrocks"
+	sorted := countSortString(s)
+	fmt.Println("Original:", s)
+	fmt.Println("Sorted:  ", sorted)
+}
+```
+
+</p>
+</details>
+
 ---
 
 ### 2. Наибольший общий префикс массива строк
